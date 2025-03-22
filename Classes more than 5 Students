@@ -1,0 +1,6 @@
+import pandas as pd
+
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+    grouped = courses.groupby('class')['student'].nunique().reset_index(name = 'cnt')
+    df = grouped[grouped['cnt']>=5]
+    return df[['class']]
